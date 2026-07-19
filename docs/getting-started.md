@@ -57,7 +57,11 @@ See [GOVERNANCE.md](../GOVERNANCE.md) for the full dual-identity model.
 
 **Rule:** instance `wiki/` wins. Scaffold from OSS only creates files that do not yet exist.
 
-## 4. Optional — enable Trend Radar / Leverage Radar
+## 4. Optional — enable agent packs (Trend Radar, Sales Motion)
+
+Agent packs are optional. Nothing below is required to use the Protocol Kernel.
+
+### Trend Radar / Leverage Radar
 
 Leverage Radar is a **reference signal provider**, not the product identity. It fetches multi-source signals and feeds the Trend Radar agent pack.
 
@@ -68,7 +72,22 @@ To enable in your instance:
 3. Install the Trend Radar agent skill from `agents/trend-radar/` (or `.cursor/skills/trend-radar/` / `.claude/skills/trend-radar/` adapter copies)
 4. Run the daily fetch and agent clustering per [docs/radar/](radar/)
 
-No provider is required to use the Protocol Kernel. Radar is optional reference infrastructure.
+### Sales Motion
+
+Validation-first go-to-market: listens for public pain signals, gives you an auditable
+Go/Watch/Pivot/No-Go verdict on whether a market exists, and only then drafts
+brand-voiced content — it never sends anything on its own. Useful if you're running
+growth/marketing across more than one account and don't have time to manually watch every
+channel: it does the listening and scoring, you keep the judgment calls.
+
+To enable in your instance:
+
+1. Copy the config: `cp templates/sales/config.example.yaml raw/ops/sales/config.yaml`
+2. Install the skill from `agents/sales-motion/` (or `.cursor/skills/sales-motion/` /
+   `.claude/skills/sales-motion/` adapter copies)
+3. In Cursor or Claude Code, ask **"Run sales motion"** — it walks you through ICP and
+   channel setup in chat, one question at a time
+4. Full workflow: [docs/sales/using-agents.md](sales/using-agents.md)
 
 ## 5. First loop — one signal → one insight note
 
